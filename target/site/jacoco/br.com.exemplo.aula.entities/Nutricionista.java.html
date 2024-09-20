@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Nutricionista.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Exemplo</a> &gt; <a href="index.source.html" class="el_package">br.com.exemplo.aula.entities</a> &gt; <span class="el_source">Nutricionista.java</span></div><h1>Nutricionista.java</h1><pre class="source lang-java linenums">package br.com.exemplo.aula.entities;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = &quot;nutricionista&quot;)
+<span class="fc" id="L12">@NoArgsConstructor</span>
+<span class="fc" id="L13">@AllArgsConstructor</span>
+public class Nutricionista {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;id_nutricionista&quot;)
+    private Long id;
+
+    @Column(nullable = false)
+    private String nome;
+
+    private String matricula;
+    private int tempoExperiencia;
+
+    @Column(nullable = false)
+    private String crn;
+
+    private String especialidade;
+
+<span class="fc" id="L32">    @ElementCollection</span>
+    private Set&lt;String&gt; certificacoes = new HashSet&lt;&gt;();
+
+
+    public Long getId() {
+<span class="fc" id="L37">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="nc" id="L41">        this.id = id;</span>
+<span class="nc" id="L42">    }</span>
+
+    public String getNome() {
+<span class="fc" id="L45">        return nome;</span>
+    }
+
+    public void setNome(String nome) {
+<span class="nc" id="L49">        this.nome = nome;</span>
+<span class="nc" id="L50">    }</span>
+
+    public String getMatricula() {
+<span class="fc" id="L53">        return matricula;</span>
+    }
+
+    public void setMatricula(String matricula) {
+<span class="nc" id="L57">        this.matricula = matricula;</span>
+<span class="nc" id="L58">    }</span>
+
+    public int getTempoExperiencia() {
+<span class="fc" id="L61">        return tempoExperiencia;</span>
+    }
+
+    public void setTempoExperiencia(int tempoExperiencia) {
+<span class="nc" id="L65">        this.tempoExperiencia = tempoExperiencia;</span>
+<span class="nc" id="L66">    }</span>
+
+
+    public String getCrn() {
+<span class="fc" id="L70">        return crn;</span>
+    }
+
+    public void setCrn(String crn) {
+<span class="nc" id="L74">        this.crn = crn;</span>
+<span class="nc" id="L75">    }</span>
+
+    public String getEspecialidade() {
+<span class="fc" id="L78">        return especialidade;</span>
+    }
+
+    public void setEspecialidade(String especialidade) {
+<span class="nc" id="L82">        this.especialidade = especialidade;</span>
+<span class="nc" id="L83">    }</span>
+
+    public Set&lt;String&gt; getCertificacoes() {
+<span class="nc" id="L86">        return certificacoes;</span>
+    }
+
+    public void setCertificacoes(Set&lt;String&gt; certificacoes) {
+<span class="nc" id="L90">        this.certificacoes = certificacoes;</span>
+<span class="nc" id="L91">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

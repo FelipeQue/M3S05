@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.exemplo.aula.services.NutricionistaServiceTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.493 s -- in br.com.exemplo.aula.services.NutricionistaServiceTest

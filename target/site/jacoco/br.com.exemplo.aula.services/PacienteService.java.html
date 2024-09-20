@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PacienteService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Exemplo</a> &gt; <a href="index.source.html" class="el_package">br.com.exemplo.aula.services</a> &gt; <span class="el_source">PacienteService.java</span></div><h1>PacienteService.java</h1><pre class="source lang-java linenums">package br.com.exemplo.aula.services;
+
+import br.com.exemplo.aula.entities.Paciente;
+import br.com.exemplo.aula.controllers.dto.PacienteRequestDTO;
+import br.com.exemplo.aula.controllers.dto.PacienteResponseDTO;
+import br.com.exemplo.aula.repositories.PacienteRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+<span class="fc" id="L12">@Service</span>
+public class PacienteService {
+
+    private final PacienteRepository pacienteRepository;
+
+
+<span class="fc" id="L18">    public PacienteService(PacienteRepository pacienteRepository) {</span>
+<span class="fc" id="L19">        this.pacienteRepository = pacienteRepository;</span>
+<span class="fc" id="L20">    }</span>
+
+    public List&lt;PacienteResponseDTO&gt; listarPacientes() {
+<span class="nc" id="L23">        return pacienteRepository.findAll().stream().map(</span>
+<span class="nc" id="L24">                paciente -&gt; new PacienteResponseDTO(</span>
+<span class="nc" id="L25">                        paciente.getId(),</span>
+<span class="nc" id="L26">                        paciente.getNome(),</span>
+<span class="nc" id="L27">                        paciente.getDataNascimento(),</span>
+<span class="nc" id="L28">                        paciente.getCpf(),</span>
+<span class="nc" id="L29">                        paciente.getTelefone(),</span>
+<span class="nc" id="L30">                        paciente.getEmail()</span>
+                )
+<span class="nc" id="L32">        ).collect(Collectors.toList());</span>
+    }
+
+    public PacienteResponseDTO buscarPaciente(Long id){
+<span class="nc" id="L36">        Paciente paciente = pacienteRepository.findById(id).orElse(null);</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (paciente != null) {</span>
+<span class="nc" id="L38">            return new PacienteResponseDTO(</span>
+<span class="nc" id="L39">                    paciente.getId(),</span>
+<span class="nc" id="L40">                    paciente.getNome(),</span>
+<span class="nc" id="L41">                    paciente.getDataNascimento(),</span>
+<span class="nc" id="L42">                    paciente.getCpf(),</span>
+<span class="nc" id="L43">                    paciente.getTelefone(),</span>
+<span class="nc" id="L44">                    paciente.getEmail()</span>
+            );
+        }
+<span class="nc" id="L47">        return null;</span>
+    }
+
+    public PacienteResponseDTO salvarPaciente(PacienteRequestDTO request) {
+<span class="nc" id="L51">        Paciente paciente = mapearRequest(request);</span>
+<span class="nc" id="L52">        Paciente entitySalva = pacienteRepository.save(paciente);</span>
+
+<span class="nc" id="L54">        return new PacienteResponseDTO(entitySalva.getId(),</span>
+<span class="nc" id="L55">                entitySalva.getNome(),</span>
+<span class="nc" id="L56">                entitySalva.getDataNascimento(),</span>
+<span class="nc" id="L57">                entitySalva.getCpf(),</span>
+<span class="nc" id="L58">                entitySalva.getTelefone(),</span>
+<span class="nc" id="L59">                entitySalva.getEmail()</span>
+        );
+    }
+
+    private Paciente mapearRequest(PacienteRequestDTO source){
+<span class="nc" id="L64">        Paciente target = new Paciente();</span>
+<span class="nc" id="L65">        target.setNome(source.getNome());</span>
+<span class="nc" id="L66">        target.setDataNascimento(source.getDataNascimento());</span>
+<span class="nc" id="L67">        target.setCpf(source.getCpf());</span>
+<span class="nc" id="L68">        target.setTelefone(source.getTelefone());</span>
+<span class="nc" id="L69">        target.setEmail(source.getEmail());</span>
+<span class="nc" id="L70">        return target;</span>
+    }
+
+    public PacienteResponseDTO atualizarPaciente(Long id, PacienteRequestDTO request) {
+<span class="nc" id="L74">        Paciente paciente = pacienteRepository.findById(id).orElse(null);</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        assert paciente != null;</span>
+<span class="nc" id="L76">        paciente.setNome(request.getNome());</span>
+<span class="nc" id="L77">        paciente.setDataNascimento(request.getDataNascimento());</span>
+<span class="nc" id="L78">        paciente.setCpf(request.getCpf());</span>
+<span class="nc" id="L79">        paciente.setTelefone(request.getTelefone());</span>
+<span class="nc" id="L80">        paciente.setEmail(request.getEmail());</span>
+
+<span class="nc" id="L82">        pacienteRepository.save(paciente);</span>
+
+<span class="nc" id="L84">        return new PacienteResponseDTO(paciente.getId(),</span>
+<span class="nc" id="L85">                paciente.getNome(),</span>
+<span class="nc" id="L86">                paciente.getDataNascimento(),</span>
+<span class="nc" id="L87">                paciente.getCpf(),</span>
+<span class="nc" id="L88">                paciente.getTelefone(),</span>
+<span class="nc" id="L89">                paciente.getEmail()</span>
+        );
+    }
+
+    public void removerPaciente(Long id) {
+<span class="nc" id="L94">        pacienteRepository.deleteById(id);</span>
+<span class="nc" id="L95">    }</span>
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

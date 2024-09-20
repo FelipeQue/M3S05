@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NutricionistaController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Exemplo</a> &gt; <a href="index.source.html" class="el_package">br.com.exemplo.aula.controllers</a> &gt; <span class="el_source">NutricionistaController.java</span></div><h1>NutricionistaController.java</h1><pre class="source lang-java linenums">package br.com.exemplo.aula.controllers;
+
+import br.com.exemplo.aula.services.NutricionistaService;
+import br.com.exemplo.aula.controllers.dto.NutricionistaRequestDTO;
+import br.com.exemplo.aula.controllers.dto.NutricionistaResponseDTO;
+import org.springframework.http.ResponseEntity;
+//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(value = &quot;/nutricionistas&quot;)
+public class NutricionistaController {
+
+    private final NutricionistaService nutricionistaService;
+
+
+<span class="fc" id="L19">    public NutricionistaController(NutricionistaService nutricionistaService) {</span>
+<span class="fc" id="L20">        this.nutricionistaService = nutricionistaService;</span>
+<span class="fc" id="L21">    }</span>
+
+//    @PreAuthorize(&quot;hasAnyAuthority('SCOPE_ADMIN','SCOPE_NUTRI')&quot;)
+    @PostMapping()
+    public NutricionistaResponseDTO salvarNutricionista(@RequestBody NutricionistaRequestDTO request) {
+<span class="nc" id="L26">        return nutricionistaService.salvarNutricionista(request);</span>
+    }
+
+    @GetMapping()
+    public List&lt;NutricionistaResponseDTO&gt; listarnutricionistas(
+            @RequestHeader(name=&quot;Authorization&quot;)
+            String token
+             // bearer shadkjasdasjhk
+    ) {
+
+<span class="nc" id="L36">        var nutricionistas = nutricionistaService.</span>
+<span class="nc" id="L37">                listarNutricionistas();</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (nutricionistas.isEmpty()){</span>
+<span class="nc" id="L39">            return null;</span>
+        } else {
+<span class="nc" id="L41">            return nutricionistas;</span>
+        }
+
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;NutricionistaResponseDTO&gt; search(@PathVariable long id) {
+<span class="nc" id="L48">        NutricionistaResponseDTO response = nutricionistaService.buscarNutricionista(id);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        if (response != null) {</span>
+<span class="nc" id="L50">            return ResponseEntity.ok(response);</span>
+        } else {
+<span class="nc" id="L52">            throw new RuntimeException(&quot;404&quot;);</span>
+        }
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; remove(@PathVariable long id) {
+<span class="nc" id="L58">        nutricionistaService.removerNutricionista(id);</span>
+<span class="nc" id="L59">        return ResponseEntity.noContent().build();</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;NutricionistaResponseDTO&gt; update(@PathVariable long id, @RequestBody NutricionistaRequestDTO request) {
+<span class="nc" id="L64">        NutricionistaResponseDTO nutricionista = nutricionistaService.atualizarNutricionista(id, request);</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (nutricionista != null) {</span>
+<span class="nc" id="L66">            return ResponseEntity.ok(nutricionista);</span>
+        } else {
+<span class="nc" id="L68">            throw new RuntimeException(&quot;404&quot;);</span>
+        }
+    }
+    
+    
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
