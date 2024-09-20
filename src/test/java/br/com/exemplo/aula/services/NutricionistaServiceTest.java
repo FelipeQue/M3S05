@@ -15,11 +15,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class NutricionistaServiceTest {
@@ -47,8 +45,8 @@ public class NutricionistaServiceTest {
     }
 
     @Test
-    @DisplayName("Solicita lista de nutricionistas retorna uma lista de DTO de resposta.")
-    void listarNutricionistas() {
+    @DisplayName("Deve retornar lista de nutricionistas")
+    void deveListarNutricionistas() {
 
         // Setup
         List<Nutricionista> nutricionistas = new ArrayList<Nutricionista>();
@@ -68,8 +66,8 @@ public class NutricionistaServiceTest {
     }
 
     @Test
-    @DisplayName("Busca nutricionista por Id e retorna um DTO de resposta.")
-    void buscarNutricionista() {
+    @DisplayName("Deve retornar nutricionista por id")
+    void deveBuscarNutricionista() {
 
         // Given
         when(nutricionistaRepository.findById(anyLong())).thenReturn(Optional.ofNullable(nutricionista));
@@ -80,10 +78,12 @@ public class NutricionistaServiceTest {
         // Then
         assertNotNull(resultado);
         assertEquals(nutricionista.getId(), resultado.getId());
+        verify(nutricionistaRepository).findById(anyLong());
     }
 
     @Test
-    void salvarNutricionista() {
+    @DisplayName("Deve salvar nutricionista e retornar dados salvos")
+    void deveSalvarNutricionista() {
 
         NutricionistaRequestDTO request = new NutricionistaRequestDTO(
                 "Nome de nutricionista",
@@ -109,7 +109,8 @@ public class NutricionistaServiceTest {
     }
 
     @Test
-    void atualizarNutricionista() {
+    @DisplayName("Deve atualizar nutricionista existente via id e retornar dados atualizados")
+    void deveAtualizarNutricionista() {
 
         NutricionistaRequestDTO request = new NutricionistaRequestDTO(
                 "Nome de nutricionista",
@@ -137,15 +138,49 @@ public class NutricionistaServiceTest {
     }
 
     @Test
-    void removerNutricionista() {
+    @DisplayName("Deve retornar nada ao solicitar remoção de nutricionista por id")
+    void deveRemoverNutricionista() {
+
+        // Given
+        doNothing().when(nutricionistaRepository).deleteById(anyLong());
+
+        // Then
+        assertDoesNotThrow(
+                () -> nutricionistaService.removerNutricionista(1L)
+        );
+
+        verify(nutricionistaRepository).deleteById(anyLong());
+    }
+
+    @Test
+    @DisplayName("Deve adicionar 1 ano de experiência a nutricionista via id")
+    void deveAdicionarAnoExperiencia() {
+
+        // Given
+        when(nutricionistaRepository.findById(anyLong())).thenReturn(Optional.ofNullable(nutricionista));
+
+        // When
+        nutricionistaService.adicionarAnoExperiencia(anyLong());
+
+        // Then
+        assertEquals(nutricionista.getTempoExperiencia(), 2);
+        verify(nutricionistaRepository).findById(anyLong());
 
     }
 
     @Test
-    void adicionarAnoExperiencia() {
-    }
+    @DisplayName("Deve adicionar certificação a nutricionista")
+    void deveAdicionarCertificacao() {
 
-    @Test
-    void adicionarCertificacao() {
+        // Given
+        when(nutricionistaRepository.findById(anyLong())).thenReturn(Optional.ofNullable(nutricionista));
+
+        // When
+        nutricionistaService.adicionarCertificacao("Certificação 3", 1L);
+
+        // Then
+        assertTrue(nutricionista.getCertificacoes().contains("Certificação 3"));
+        verify(nutricionistaRepository).findById(anyLong());
+
     }
 }
