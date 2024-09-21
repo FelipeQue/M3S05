@@ -1,11 +1,8 @@
 package br.com.exemplo.aula.services;
 
 import br.com.exemplo.aula.controllers.dto.PacienteRequestDTO;
-import br.com.exemplo.aula.entities.Nutricionista;
 import br.com.exemplo.aula.entities.Paciente;
-import br.com.exemplo.aula.repositories.NutricionistaRepository;
 import br.com.exemplo.aula.repositories.PacienteRepository;
-import jakarta.persistence.Column;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +19,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class PacienteServiceTest {
+class PacienteServiceUnitTest {
 
     @Mock
     PacienteRepository pacienteRepository;

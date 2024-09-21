@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class NutricionistaServiceTest {
+public class NutricionistaServiceUnitTest {
 
     @Mock
     NutricionistaRepository nutricionistaRepository;
@@ -41,7 +41,6 @@ public class NutricionistaServiceTest {
         "Especialidade",
                 new HashSet<String>(Set.of("Certificação 1", "Certificação 2"))
         );
-
     }
 
     @Test
