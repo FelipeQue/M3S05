@@ -1,3 +1,7 @@
 /Users/felipequerette/IdeaProjects/M03S05/src/test/java/br/com/exemplo/aula/ApplicationTests.java
+/Users/felipequerette/IdeaProjects/M03S05/src/test/java/br/com/exemplo/aula/controllers/ConsultaControllerTDDTest.java
 /Users/felipequerette/IdeaProjects/M03S05/src/test/java/br/com/exemplo/aula/controllers/ConsultaControllerTest.java
-/Users/felipequerette/IdeaProjects/M03S05/src/test/java/br/com/exemplo/aula/services/NutricionistaServiceTest.java
+/Users/felipequerette/IdeaProjects/M03S05/src/test/java/br/com/exemplo/aula/controllers/PacienteControllerTest.java
+/Users/felipequerette/IdeaProjects/M03S05/src/test/java/br/com/exemplo/aula/services/NutricionistaServiceSpringTest.java
+/Users/felipequerette/IdeaProjects/M03S05/src/test/java/br/com/exemplo/aula/services/NutricionistaServiceUnitTest.java
+/Users/felipequerette/IdeaProjects/M03S05/src/test/java/br/com/exemplo/aula/services/PacienteServiceUnitTest.java

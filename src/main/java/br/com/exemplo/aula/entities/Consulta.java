@@ -2,13 +2,17 @@ package br.com.exemplo.aula.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Entity
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table(name = "consulta")
 public class Consulta {
 
@@ -17,7 +21,6 @@ public class Consulta {
     private Long id;
 
     @ManyToOne
-    // @JoinColumn(name = "id_nutricionista") OPCIONAL ISSO AQUI.
     private Nutricionista nutricionista;
 
     @ManyToOne

@@ -1,3 +1,7 @@
+br/com/exemplo/aula/services/NutricionistaServiceUnitTest.class
+br/com/exemplo/aula/services/NutricionistaServiceSpringTest.class
 br/com/exemplo/aula/ApplicationTests.class
 br/com/exemplo/aula/controllers/ConsultaControllerTest.class
-br/com/exemplo/aula/services/NutricionistaServiceTest.class
+br/com/exemplo/aula/controllers/PacienteControllerTest.class
+br/com/exemplo/aula/controllers/ConsultaControllerTDDTest.class
+br/com/exemplo/aula/services/PacienteServiceUnitTest.class

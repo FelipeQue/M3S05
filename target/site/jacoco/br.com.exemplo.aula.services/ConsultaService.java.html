@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+<span class="fc" id="L15">@Service</span>
 public class ConsultaService {
 
     private final ConsultaRepository consultaRepository;
@@ -39,14 +39,14 @@ public class ConsultaService {
     }
 
     public ConsultaResponseDTO buscarConsulta(Long id){
-<span class="nc" id="L42">        Consulta consulta = consultaRepository.findById(id).orElse(null);</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">        if (consulta != null) {</span>
-<span class="nc" id="L44">            return new ConsultaResponseDTO(</span>
-<span class="nc" id="L45">                    consulta.getId(),</span>
-<span class="nc" id="L46">                    consulta.getNutricionista(),</span>
-<span class="nc" id="L47">                    consulta.getPaciente(),</span>
-<span class="nc" id="L48">                    consulta.getData(),</span>
-<span class="nc" id="L49">                    consulta.getObservacoes()</span>
+<span class="fc" id="L42">        Consulta consulta = consultaRepository.findById(id).orElse(null);</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (consulta != null) {</span>
+<span class="fc" id="L44">            return new ConsultaResponseDTO(</span>
+<span class="fc" id="L45">                    consulta.getId(),</span>
+<span class="fc" id="L46">                    consulta.getNutricionista(),</span>
+<span class="fc" id="L47">                    consulta.getPaciente(),</span>
+<span class="fc" id="L48">                    consulta.getData(),</span>
+<span class="fc" id="L49">                    consulta.getObservacoes()</span>
             );
         }
 <span class="nc" id="L52">        return null;</span>
@@ -65,14 +65,35 @@ public class ConsultaService {
     }
 
     private Consulta mapearRequest(ConsultaRequestDTO source){
-<span class="nc" id="L68">        Consulta target = new Consulta();</span>
-<span class="nc" id="L69">        target.setData(source.getData());</span>
-<span class="nc" id="L70">        target.setObservacoes(source.getObservacoes());</span>
-<span class="nc" id="L71">        target.setNutricionista(nutricionistaRepository.findById(source.getIdNutricionista()).orElse(null));</span>
-<span class="nc" id="L72">        target.setPaciente(pacienteRepository.findById(source.getIdPaciente()).orElse(null));</span>
-<span class="nc" id="L73">        return target;</span>
+<span class="fc" id="L68">        Consulta target = new Consulta();</span>
+<span class="fc" id="L69">        target.setData(source.getData());</span>
+<span class="fc" id="L70">        target.setObservacoes(source.getObservacoes());</span>
+<span class="fc" id="L71">        target.setNutricionista(nutricionistaRepository.findById(source.getIdNutricionista()).orElse(null));</span>
+<span class="fc" id="L72">        target.setPaciente(pacienteRepository.findById(source.getIdPaciente()).orElse(null));</span>
+<span class="fc" id="L73">        return target;</span>
     }
 
 
+    public ConsultaResponseDTO atualizarConsulta(Long id, ConsultaRequestDTO request) {
+<span class="fc" id="L78">        Consulta consulta = consultaRepository.findById(id).orElse(null);</span>
+<span class="fc" id="L79">        Consulta consultaAtualizada = mapearRequest(request);</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        assert consulta != null;</span>
+<span class="fc" id="L81">        consulta.setData(consultaAtualizada.getData());</span>
+<span class="fc" id="L82">        consulta.setNutricionista(consultaAtualizada.getNutricionista());</span>
+<span class="fc" id="L83">        consulta.setPaciente(consultaAtualizada.getPaciente());</span>
+<span class="fc" id="L84">        consulta.setObservacoes(consultaAtualizada.getObservacoes());</span>
+<span class="fc" id="L85">        consultaRepository.save(consulta);</span>
+<span class="fc" id="L86">        return new ConsultaResponseDTO(</span>
+<span class="fc" id="L87">                consulta.getId(),</span>
+<span class="fc" id="L88">                consulta.getNutricionista(),</span>
+<span class="fc" id="L89">                consulta.getPaciente(),</span>
+<span class="fc" id="L90">                consulta.getData(),</span>
+<span class="fc" id="L91">                consulta.getObservacoes()</span>
+        );
+    }
+
+    public void deletarConsulta(Long id) {
+<span class="fc" id="L96">        consultaRepository.deleteById(id);</span>
+<span class="fc" id="L97">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

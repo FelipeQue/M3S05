@@ -3,9 +3,13 @@
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
 public class ConsultaRequestDTO {
 
     private Long idNutricionista;
@@ -16,47 +20,47 @@ public class ConsultaRequestDTO {
     private LocalDate data;
     private String observacoes;
 
-<span class="nc" id="L19">    public ConsultaRequestDTO(){</span>
-<span class="nc" id="L20">    }</span>
+<span class="fc" id="L23">    public ConsultaRequestDTO(){</span>
+<span class="fc" id="L24">    }</span>
 
-<span class="nc" id="L22">    public ConsultaRequestDTO(Long idNutricionista, Long idPaciente, LocalDate data, String observacoes) {</span>
-<span class="nc" id="L23">        this.idNutricionista = idNutricionista;</span>
-<span class="nc" id="L24">        this.idPaciente = idPaciente;</span>
-<span class="nc" id="L25">        this.data = data;</span>
-<span class="nc" id="L26">        this.observacoes = observacoes;</span>
-<span class="nc" id="L27">    }</span>
+<span class="nc" id="L26">    public ConsultaRequestDTO(Long idNutricionista, Long idPaciente, LocalDate data, String observacoes) {</span>
+<span class="nc" id="L27">        this.idNutricionista = idNutricionista;</span>
+<span class="nc" id="L28">        this.idPaciente = idPaciente;</span>
+<span class="nc" id="L29">        this.data = data;</span>
+<span class="nc" id="L30">        this.observacoes = observacoes;</span>
+<span class="nc" id="L31">    }</span>
 
     public Long getIdNutricionista() {
-<span class="nc" id="L30">        return idNutricionista;</span>
+<span class="fc" id="L34">        return idNutricionista;</span>
     }
 
     public void setIdNutricionista(Long idNutricionista) {
-<span class="nc" id="L34">        this.idNutricionista = idNutricionista;</span>
-<span class="nc" id="L35">    }</span>
+<span class="fc" id="L38">        this.idNutricionista = idNutricionista;</span>
+<span class="fc" id="L39">    }</span>
 
     public Long getIdPaciente() {
-<span class="nc" id="L38">        return idPaciente;</span>
+<span class="fc" id="L42">        return idPaciente;</span>
     }
 
     public void setIdPaciente(Long idPaciente) {
-<span class="nc" id="L42">        this.idPaciente = idPaciente;</span>
-<span class="nc" id="L43">    }</span>
+<span class="fc" id="L46">        this.idPaciente = idPaciente;</span>
+<span class="fc" id="L47">    }</span>
 
     public LocalDate getData() {
-<span class="nc" id="L46">        return data;</span>
+<span class="fc" id="L50">        return data;</span>
     }
 
     public void setData(LocalDate data) {
-<span class="nc" id="L50">        this.data = data;</span>
-<span class="nc" id="L51">    }</span>
+<span class="fc" id="L54">        this.data = data;</span>
+<span class="fc" id="L55">    }</span>
 
     public String getObservacoes() {
-<span class="nc" id="L54">        return observacoes;</span>
+<span class="fc" id="L58">        return observacoes;</span>
     }
 
     public void setObservacoes(String observacoes) {
-<span class="nc" id="L58">        this.observacoes = observacoes;</span>
-<span class="nc" id="L59">    }</span>
+<span class="fc" id="L62">        this.observacoes = observacoes;</span>
+<span class="fc" id="L63">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

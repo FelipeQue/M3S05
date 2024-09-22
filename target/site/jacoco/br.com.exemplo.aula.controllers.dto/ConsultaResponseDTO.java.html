@@ -4,69 +4,47 @@ import br.com.exemplo.aula.entities.Nutricionista;
 import br.com.exemplo.aula.entities.Paciente;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
+<span class="fc" id="L16">@AllArgsConstructor</span>
+<span class="nc" id="L17">@NoArgsConstructor</span>
 public class ConsultaResponseDTO {
 
-    private Long id;
-    private Nutricionista nutricionista;
-    private Paciente paciente;
+<span class="fc" id="L20">    private Long id;</span>
+<span class="fc" id="L21">    private Nutricionista nutricionista;</span>
+<span class="fc" id="L22">    private Paciente paciente;</span>
 
     @JsonSerialize
     @JsonFormat(pattern = &quot;dd/MM/yyyy&quot;)
-    private LocalDate data;
+<span class="fc" id="L26">    private LocalDate data;</span>
 
-    private String observacoes;
-
-<span class="nc" id="L22">    public ConsultaResponseDTO(){}</span>
-
-<span class="nc" id="L24">    public ConsultaResponseDTO(Long id, Nutricionista nutricionista, Paciente paciente, LocalDate data, String observacoes) {</span>
-<span class="nc" id="L25">        this.id = id;</span>
-<span class="nc" id="L26">        this.nutricionista = nutricionista;</span>
-<span class="nc" id="L27">        this.paciente = paciente;</span>
-<span class="nc" id="L28">        this.data = data;</span>
-<span class="nc" id="L29">        this.observacoes = observacoes;</span>
-<span class="nc" id="L30">    }</span>
-
-    public Long getId() {
-<span class="nc" id="L33">        return id;</span>
-    }
+<span class="fc" id="L28">    private String observacoes;</span>
 
     public void setId(Long id) {
-<span class="nc" id="L37">        this.id = id;</span>
-<span class="nc" id="L38">    }</span>
-
-    public Nutricionista getNutricionista() {
-<span class="nc" id="L41">        return nutricionista;</span>
-    }
+<span class="nc" id="L31">        this.id = id;</span>
+<span class="nc" id="L32">    }</span>
 
     public void setNutricionista(Nutricionista nutricionista) {
-<span class="nc" id="L45">        this.nutricionista = nutricionista;</span>
-<span class="nc" id="L46">    }</span>
-
-    public Paciente getPaciente() {
-<span class="nc" id="L49">        return paciente;</span>
-    }
+<span class="nc" id="L35">        this.nutricionista = nutricionista;</span>
+<span class="nc" id="L36">    }</span>
 
     public void setPaciente(Paciente paciente) {
-<span class="nc" id="L53">        this.paciente = paciente;</span>
-<span class="nc" id="L54">    }</span>
-
-    public LocalDate getData() {
-<span class="nc" id="L57">        return data;</span>
-    }
+<span class="nc" id="L39">        this.paciente = paciente;</span>
+<span class="nc" id="L40">    }</span>
 
     public void setData(LocalDate data) {
-<span class="nc" id="L61">        this.data = data;</span>
-<span class="nc" id="L62">    }</span>
-
-    public String getObservacoes() {
-<span class="nc" id="L65">        return observacoes;</span>
-    }
+<span class="nc" id="L43">        this.data = data;</span>
+<span class="nc" id="L44">    }</span>
 
     public void setObservacoes(String observacoes) {
-<span class="nc" id="L69">        this.observacoes = observacoes;</span>
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L47">        this.observacoes = observacoes;</span>
+<span class="nc" id="L48">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

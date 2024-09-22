@@ -4,6 +4,7 @@ import br.com.exemplo.aula.services.ConsultaService;
 import br.com.exemplo.aula.controllers.dto.ConsultaRequestDTO;
 import br.com.exemplo.aula.controllers.dto.ConsultaResponseDTO;
 import br.com.exemplo.aula.controllers.dto.ConsultaResponseListDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,25 +16,46 @@ public class ConsultaController {
 
     private final ConsultaService consultaService;
 
-<span class="fc" id="L18">    public ConsultaController(ConsultaService consultaService) {</span>
-<span class="fc" id="L19">        this.consultaService = consultaService;</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L19">    public ConsultaController(ConsultaService consultaService) {</span>
+<span class="fc" id="L20">        this.consultaService = consultaService;</span>
+<span class="fc" id="L21">    }</span>
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public ConsultaResponseDTO salvarConsulta(@RequestBody ConsultaRequestDTO request) {
-<span class="nc" id="L24">        return consultaService.salvarConsulta(request);</span>
+<span class="nc" id="L26">        return consultaService.salvarConsulta(request);</span>
     }
 
     @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
     public List&lt;ConsultaResponseListDTO&gt; listarConsultas() {
-<span class="fc" id="L29">        var consultas = consultaService.listarConsultas();</span>
-<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if (consultas.isEmpty()){</span>
-<span class="fc" id="L31">            return null;</span>
+<span class="fc" id="L32">        var consultas = consultaService.listarConsultas();</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (consultas.isEmpty()){</span>
+<span class="fc" id="L34">            return null;</span>
         } else {
-<span class="nc" id="L33">            return consultas;</span>
+<span class="nc" id="L36">            return consultas;</span>
         }
-
     }
+
+    @GetMapping(&quot;/{id}&quot;)
+    @ResponseStatus(HttpStatus.OK)
+    public ConsultaResponseDTO buscarConsulta(@PathVariable Long id) {
+<span class="fc" id="L43">        return consultaService.buscarConsulta(id);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    @ResponseStatus(HttpStatus.OK)
+    public ConsultaResponseDTO atualizarConsulta(@PathVariable Long id, @RequestBody ConsultaRequestDTO request) {
+<span class="fc" id="L49">        return consultaService.atualizarConsulta(id, request);</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarConsulta(@PathVariable Long id) {
+<span class="fc" id="L55">        consultaService.deletarConsulta(id);</span>
+<span class="fc" id="L56">    }</span>
+
+
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,73 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NutricionistaRequestDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Exemplo</a> &gt; <a href="index.source.html" class="el_package">br.com.exemplo.aula.controllers.dto</a> &gt; <span class="el_source">NutricionistaRequestDTO.java</span></div><h1>NutricionistaRequestDTO.java</h1><pre class="source lang-java linenums">package br.com.exemplo.aula.controllers.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.HashSet;
+
+<span class="nc" id="L10">@NoArgsConstructor</span>
+<span class="fc" id="L11">@AllArgsConstructor</span>
+@Getter
+<span class="nc" id="L13">@Setter</span>
 public class NutricionistaRequestDTO {
 
-    private String nome;
-    private String matricula;
-    private int tempoExperiencia;
-    private Long idEndereco;
-    private String crn;
-    private String especialidade;
-
-<span class="nc" id="L12">    public NutricionistaRequestDTO() {</span>
-<span class="nc" id="L13">    }</span>
-
-<span class="nc" id="L15">    public NutricionistaRequestDTO(String nome, String matricula, int tempoExperiencia, Long idEndereco, String crn, String especialidade) {</span>
-<span class="nc" id="L16">        this.nome = nome;</span>
-<span class="nc" id="L17">        this.matricula = matricula;</span>
-<span class="nc" id="L18">        this.tempoExperiencia = tempoExperiencia;</span>
-<span class="nc" id="L19">        this.idEndereco = idEndereco;</span>
-<span class="nc" id="L20">        this.crn = crn;</span>
-<span class="nc" id="L21">        this.especialidade = especialidade;</span>
-<span class="nc" id="L22">    }</span>
-
-    public String getNome() {
-<span class="nc" id="L25">        return nome;</span>
-    }
-
-    public void setNome(String nome) {
-<span class="nc" id="L29">        this.nome = nome;</span>
-<span class="nc" id="L30">    }</span>
-
-    public String getMatricula() {
-<span class="nc" id="L33">        return matricula;</span>
-    }
-
-    public void setMatricula(String matricula) {
-<span class="nc" id="L37">        this.matricula = matricula;</span>
-<span class="nc" id="L38">    }</span>
-
-    public int getTempoExperiencia() {
-<span class="nc" id="L41">        return tempoExperiencia;</span>
-    }
-
-    public void setTempoExperiencia(int tempoExperiencia) {
-<span class="nc" id="L45">        this.tempoExperiencia = tempoExperiencia;</span>
-<span class="nc" id="L46">    }</span>
-
-    public Long getIdEndereco() {
-<span class="nc" id="L49">        return idEndereco;</span>
-    }
-
-    public void setIdEndereco(Long idEndereco) {
-<span class="nc" id="L53">        this.idEndereco = idEndereco;</span>
-<span class="nc" id="L54">    }</span>
-
-    public String getCrn() {
-<span class="nc" id="L57">        return crn;</span>
-    }
-
-    public void setCrn(String crn) {
-<span class="nc" id="L61">        this.crn = crn;</span>
-<span class="nc" id="L62">    }</span>
-
-    public String getEspecialidade() {
-<span class="nc" id="L65">        return especialidade;</span>
-    }
-
-    public void setEspecialidade(String especialidade) {
-<span class="nc" id="L69">        this.especialidade = especialidade;</span>
-<span class="nc" id="L70">    }</span>
+<span class="fc" id="L16">    private String nome;</span>
+<span class="fc" id="L17">    private String matricula;</span>
+<span class="fc" id="L18">    private int tempoExperiencia;</span>
+<span class="nc" id="L19">    private Long idEndereco;</span>
+<span class="fc" id="L20">    private String crn;</span>
+<span class="fc" id="L21">    private String especialidade;</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

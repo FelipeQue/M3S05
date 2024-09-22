@@ -9,21 +9,21 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-<span class="nc" id="L12">@NoArgsConstructor</span>
-<span class="nc" id="L13">@AllArgsConstructor</span>
+<span class="fc" id="L12">@NoArgsConstructor</span>
+<span class="fc" id="L13">@AllArgsConstructor</span>
 @Getter
-<span class="nc" id="L15">@Setter</span>
+<span class="fc" id="L15">@Setter</span>
 public class PacienteRequestDTO {
 
-<span class="nc" id="L18">    private String nome;</span>
+<span class="fc" id="L18">    private String nome;</span>
 
     @JsonDeserialize
     @JsonFormat(pattern = &quot;dd/MM/yyyy&quot;)
-<span class="nc" id="L22">    private LocalDate dataNascimento;</span>
+<span class="fc" id="L22">    private LocalDate dataNascimento;</span>
 
-<span class="nc" id="L24">    private String cpf;</span>
-<span class="nc" id="L25">    private String telefone;</span>
-<span class="nc" id="L26">    private String email;</span>
+<span class="fc" id="L24">    private String cpf;</span>
+<span class="fc" id="L25">    private String telefone;</span>
+<span class="fc" id="L26">    private String email;</span>
 <span class="nc" id="L27">    private Long idEndereco;</span>
 
 }
