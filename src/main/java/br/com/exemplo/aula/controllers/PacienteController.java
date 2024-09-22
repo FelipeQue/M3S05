@@ -4,6 +4,7 @@ import br.com.exemplo.aula.services.PacienteService;
 import br.com.exemplo.aula.controllers.dto.PacienteRequestDTO;
 import br.com.exemplo.aula.controllers.dto.PacienteResponseDTO;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +22,8 @@ public class PacienteController {
     }
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public PacienteResponseDTO salvarPaciente(@RequestBody PacienteRequestDTO request,
-                                              //@RequestParam("date")
                                               @DateTimeFormat(pattern = "dd/MM/yyyy") Date date) {
         return pacienteService.salvarPaciente(request);
 
